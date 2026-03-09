@@ -1,9 +1,7 @@
 package otav.br.infrastructure.servicebus;
 
 import com.azure.messaging.servicebus.*;
-import io.quarkus.logging.Log;
 import io.quarkus.runtime.Startup;
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.HashMap;
@@ -11,8 +9,7 @@ import java.util.Map;
 
 @Startup
 @ApplicationScoped
-public class ServiceBusProducer {
-
+public class ServiceBusProducerManager {
 
     private Map<String, ServiceBusSenderClient> senderClients = new HashMap<>();
 

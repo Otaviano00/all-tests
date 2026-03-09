@@ -1,4 +1,4 @@
-package otav.br.infrastructure.servicebus;
+package otav.br.infrastructure.servicebus.config;
 
 import io.smallrye.config.ConfigMapping;
 

@@ -12,8 +12,8 @@ import jakarta.inject.Inject;
 import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
 import otav.br.infrastructure.exception.MQPutException;
 import otav.br.infrastructure.exception.MQTimeoutException;
-import otav.br.infrastructure.servicebus.ServiceBusConfig;
-import otav.br.infrastructure.servicebus.ServiceBusConsumer;
+import otav.br.infrastructure.servicebus.config.ServiceBusConfig;
+import otav.br.infrastructure.servicebus.ServiceBusConsumerManager;
 import otav.br.messaging.ibmmq.IBMMQProducer;
 
 import java.util.concurrent.Executors;
@@ -29,7 +29,7 @@ public class OtavTestConsumer {
     private final AtomicBoolean restartScheduled = new AtomicBoolean(false);
 
     @Inject
-    ServiceBusConsumer serviceBusConsumer;
+    ServiceBusConsumerManager serviceBusConsumerManager;
 
     @Inject
     IBMMQProducer ibmMqProducer;
@@ -55,12 +55,12 @@ public class OtavTestConsumer {
     }
 
     private synchronized void startConsumerIfNeeded() {
-        if (serviceBusConsumer.getProcessorClients().containsKey(queueName)) {
+        if (serviceBusConsumerManager.getProcessorClients().containsKey(queueName)) {
             return;
         }
 
         Log.infof("Starting Service Bus consumer for queue=%s", queueName);
-        serviceBusConsumer.start(queueName, connectionString, this::processMessage, this::processError);
+        serviceBusConsumerManager.start(queueName, connectionString, this::processMessage, this::processError);
     }
 
     public void processMessage(ServiceBusReceivedMessageContext context) {
@@ -122,7 +122,7 @@ public class OtavTestConsumer {
         }
 
         try {
-            serviceBusConsumer.stop(queueName);
+            serviceBusConsumerManager.stop(queueName);
         } catch (Exception e) {
             Log.debugf(e, "Error stopping Service Bus consumer: %s", e.getMessage());
         }
@@ -140,7 +140,7 @@ public class OtavTestConsumer {
     @PreDestroy
     public void cleanup() {
         try {
-            serviceBusConsumer.stop(queueName);
+            serviceBusConsumerManager.stop(queueName);
         } catch (Exception e) {
             Log.debugf(e, "Error stopping Service Bus consumer on shutdown: %s", e.getMessage());
         }

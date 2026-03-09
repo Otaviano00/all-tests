@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 @ApplicationScoped
 @Getter
-public class ServiceBusConsumer {
+public class ServiceBusConsumerManager {
 
     private Map<String, ServiceBusProcessorClient> processorClients = new HashMap<>();
     

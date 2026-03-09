@@ -1,4 +1,4 @@
-package otav.br.messaging.ibmmq;
+package otav.br.infrastructure.ibmmq;
 
 import com.ibm.mq.jakarta.jms.MQQueueConnectionFactory;
 import com.ibm.msg.client.jakarta.jms.JmsConstants;

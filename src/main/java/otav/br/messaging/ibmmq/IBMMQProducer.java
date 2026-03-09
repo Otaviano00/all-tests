@@ -18,6 +18,7 @@ import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import otav.br.infrastructure.exception.MQPutException;
 import otav.br.infrastructure.exception.MQTimeoutException;
+import otav.br.infrastructure.ibmmq.IBMMQConnectionFactory;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Set;
