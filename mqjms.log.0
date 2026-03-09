@@ -1,0 +1,304 @@
+Date: Sun Mar 08 23:44:30 BRT 2026
+MQ Build Level=X.X.X(p944-L251003)
+Java version: 21.0.8(21.0.8+9-LTS)
+Process ID: 98048
+--------------------------------------------------------------------
+8 de março de 2026 23:47:39 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:47:39 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:47:39 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:05 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:05 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:05 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:05 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:31 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:31 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:31 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:31 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:57 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:57 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:57 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:48:57 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:49:23 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:49:23 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:49:23 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Iniciando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]' com o gerenciador de filas 'null'
+
+EXPLICAÇÃO:
+Uma reconexão foi iniciada, seja devido a uma solicitação de um cluster uniforme (nome de gerenciador de filas não nulo) ou como resultado de uma falha de conexão.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:49:23 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Reagendando a reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]'
+
+EXPLICAÇÃO:
+Uma nova tentativa de conexão falhou e será feita uma nova tentativa mais tarde.
+
+AÇÃO:
+Nenhuma ação é necessária.
+--------------------------------------------------------------------
+8 de março de 2026 23:49:49 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+O tempo de reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/1b69e136][connectionId=414D5143514D38202020202020202020462DAE6900820040,traceIdentifier=1,remoteTraceIdentifier=-1]' expirou
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------
+8 de março de 2026 23:49:49 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.msg.client.jakarta.jms.internal.JmsProviderExceptionListener
+A exceção é ignorada, visto que o tipo está fora dos escolhidos para o listener de exceção: '
+                      Mensagem : com.ibm.msg.client.jakarta.jms.DetailedJMSException: JMSWMQ1107: Ocorreu um problema com esta conexão.
+Ocorreu um erro com a conexão do IBM MQ JMS.
+Utilize a exceção vinculada para determinar a causa deste erro.
+               Parâmetro class : class com.ibm.msg.client.jakarta.jms.DetailedJMSException
+                         Pilha : com.ibm.msg.client.jakarta.wmq.common.internal.Reason.reasonToException(Reason.java:709)
+                               : com.ibm.msg.client.jakarta.wmq.common.internal.Reason.createException(Reason.java:229)
+                               : com.ibm.msg.client.jakarta.wmq.internal.WMQConnection.consumer(WMQConnection.java:983)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.callEventHandler(RemoteHconn.java:3050)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.setReconnectionFailure(RemoteHconn.java:2581)
+                               : com.ibm.mq.jmqi.remote.api.RemoteParentHconn.setReconnectionFailure(RemoteParentHconn.java:170)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.shouldDie(RemoteReconnectThread.java:412)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.bestHconn(RemoteReconnectThread.java:312)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.run(RemoteReconnectThread.java:138)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:319)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:99)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:343)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:312)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1240)
+  Causado por [1] --> Mensagem : com.ibm.mq.MQException: JMSCMQ0001: A chamada do IBM MQ falhou com o compcode '2' ('MQCC_FAILED') motivo '2556' ('MQRC_RECONNECT_TIMED_OUT').
+               Parâmetro class : class com.ibm.mq.MQException
+                         Pilha : com.ibm.msg.client.jakarta.wmq.common.internal.Reason.createException(Reason.java:217)
+                               : com.ibm.msg.client.jakarta.wmq.internal.WMQConnection.consumer(WMQConnection.java:983)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.callEventHandler(RemoteHconn.java:3050)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.setReconnectionFailure(RemoteHconn.java:2581)
+                               : com.ibm.mq.jmqi.remote.api.RemoteParentHconn.setReconnectionFailure(RemoteParentHconn.java:170)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.shouldDie(RemoteReconnectThread.java:412)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.bestHconn(RemoteReconnectThread.java:312)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.run(RemoteReconnectThread.java:138)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:319)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:99)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:343)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:312)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1240)
+  Causado por [2] --> Mensagem : com.ibm.mq.jmqi.JmqiException: CC=2;RC=2538;AMQ9204: Conexão com o host 'localhost(1414)' rejeitada. [1=com.ibm.mq.jmqi.JmqiException[CC=2;RC=2538;AMQ9204: Conexão com o host 'localhost/127.0.0.1:1414' rejeitada. [1=java.net.ConnectException[Conexão recusada],3=localhost/127.0.0.1:1414,4=TCP,5=Socket.connect]],3=localhost(1414),4=,5=RemoteTCPConnection.bindAndConnectSocket]
+               Parâmetro class : class com.ibm.mq.jmqi.JmqiException
+                         Pilha : com.ibm.mq.jmqi.remote.api.RemoteFAP$Connector.jmqiConnect(RemoteFAP.java:13911)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP$Connector.access$200(RemoteFAP.java:13340)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP.jmqiConnect(RemoteFAP.java:1544)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.doReconnect(RemoteHconn.java:4390)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.reconnectSelf(RemoteHconn.java:4147)
+                               : com.ibm.mq.jmqi.remote.api.RemoteParentHconn.reconnectSelf(RemoteParentHconn.java:579)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.run(RemoteReconnectThread.java:146)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:319)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:99)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:343)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:312)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1240)
+  Causado por [3] --> Mensagem : com.ibm.mq.jmqi.JmqiException: CC=2;RC=2538;AMQ9204: Conexão com o host 'localhost/127.0.0.1:1414' rejeitada. [1=java.net.ConnectException[Conexão recusada],3=localhost/127.0.0.1:1414,4=TCP,5=Socket.connect]
+               Parâmetro class : class com.ibm.mq.jmqi.JmqiException
+                         Pilha : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection.bindAndConnectSocket(RemoteTCPConnection.java:1000)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection.protocolConnect(RemoteTCPConnection.java:1764)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnection.connect(RemoteConnection.java:1006)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionSpecification.getNewConnection(RemoteConnectionSpecification.java:691)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionSpecification.getSessionFromNewConnection(RemoteConnectionSpecification.java:283)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionSpecification.getSession(RemoteConnectionSpecification.java:170)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionPool.getSession(RemoteConnectionPool.java:128)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP$Connector.jmqiConnect(RemoteFAP.java:13575)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP$Connector.access$200(RemoteFAP.java:13340)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP.jmqiConnect(RemoteFAP.java:1544)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.doReconnect(RemoteHconn.java:4390)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.reconnectSelf(RemoteHconn.java:4147)
+                               : com.ibm.mq.jmqi.remote.api.RemoteParentHconn.reconnectSelf(RemoteParentHconn.java:579)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.run(RemoteReconnectThread.java:146)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:319)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:99)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:343)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:312)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1240)
+  Causado por [4] --> Mensagem : java.net.ConnectException: Conexão recusada
+               Parâmetro class : class java.net.ConnectException
+                         Pilha : sun.nio.ch.Net.connect0(Net.java:-2)
+                               : sun.nio.ch.Net.connect(Net.java:589)
+                               : sun.nio.ch.Net.connect(Net.java:578)
+                               : sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+                               : java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+                               : java.net.Socket.connect(Socket.java:757)
+                               : java.net.Socket.connect(Socket.java:691)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection$4.run(RemoteTCPConnection.java:1174)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection$4.run(RemoteTCPConnection.java:1166)
+                               : java.security.AccessController.doPrivileged(AccessController.java:319)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection.connectSocket(RemoteTCPConnection.java:1166)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection.bindAndConnectSocket(RemoteTCPConnection.java:906)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection.protocolConnect(RemoteTCPConnection.java:1764)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnection.connect(RemoteConnection.java:1006)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionSpecification.getNewConnection(RemoteConnectionSpecification.java:691)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionSpecification.getSessionFromNewConnection(RemoteConnectionSpecification.java:283)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionSpecification.getSession(RemoteConnectionSpecification.java:170)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteConnectionPool.getSession(RemoteConnectionPool.java:128)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP$Connector.jmqiConnect(RemoteFAP.java:13575)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP$Connector.access$200(RemoteFAP.java:13340)
+                               : com.ibm.mq.jmqi.remote.api.RemoteFAP.jmqiConnect(RemoteFAP.java:1544)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.doReconnect(RemoteHconn.java:4390)
+                               : com.ibm.mq.jmqi.remote.api.RemoteHconn.reconnectSelf(RemoteHconn.java:4147)
+                               : com.ibm.mq.jmqi.remote.api.RemoteParentHconn.reconnectSelf(RemoteParentHconn.java:579)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread.run(RemoteReconnectThread.java:146)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:319)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:99)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:343)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:312)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1240)
+'.
+
+EXPLICAÇÃO:
+A exceção não cai nos tipos escolhidos para a entrega ao listener de exceção da conexão e foi ignorada.
+
+AÇÃO:
+Revise a configuração de conexão ASYNC_EXCEPTIONS para assegurar-se de que a filtragem de exceções está configurada como deveria.
+--------------------------------------------------------------------
+8 de março de 2026 23:49:49 BRT[ReconnectThread [MQ Build Level=X.X.X(p944-L251003)]] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+O tempo de reconexão do hconn pai 'com.ibm.mq.jmqi.remote.impl.RemoteSession[:/4976995a][connectionId=414D5143514D38202020202020202020462DAE6900840040,traceIdentifier=3,remoteTraceIdentifier=-1]' expirou
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------
