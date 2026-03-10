@@ -11,11 +11,18 @@ public interface ServiceBusConfig {
 
     interface NamespaceConfig {
         Map<String, QueueConfig> queue();
+        String connectionString();
     }
 
     interface QueueConfig {
         String name();
-        String connectionString();
+        ResilienceConfig resilience();
+    }
+
+    interface ResilienceConfig {
+        String timeoutQueue();
+        int timeoutRetryDelaySeconds();
+        int restartDelaySeconds();
     }
 
 }

@@ -13,19 +13,20 @@ public class OtavTestProducer {
     private ServiceBusProducerManager serviceBusProducerManager;
     private ServiceBusConfig serviceBusConfig;
 
-    public void sendMessage(String message) {
-        // Access the configuration: namespace -> queue
-        ServiceBusConfig.QueueConfig queueConfig = serviceBusConfig
+    public void sendMessage(OtavTestMessage message) {
+        ServiceBusConfig.NamespaceConfig namespaceConfig = serviceBusConfig
                 .namespaces()
-                .get("otav.dev")
+                .get("otav.dev");
+
+        ServiceBusConfig.QueueConfig queueConfig = namespaceConfig
                 .queue()
                 .get("otav.test");
 
         String queueName = queueConfig.name();
-        String connectionString = queueConfig.connectionString();
+        String connectionString = namespaceConfig.connectionString();
 
         serviceBusProducerManager.sendMessage(queueName, connectionString, message);
-        Log.infof("Sent message to Service Bus queue '%s' in namespace 'otav.dev': %s", queueName, message);
+        Log.infof("[%s] Sent message to Service Bus: %s", queueName, message.toString());
     }
 
 }
