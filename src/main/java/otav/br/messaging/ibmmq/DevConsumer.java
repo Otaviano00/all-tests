@@ -11,7 +11,7 @@ import java.util.concurrent.CompletionStage;
 
 @Startup
 @ApplicationScoped
-public class IBMMQConsumer {
+public class DevConsumer {
 
     @Incoming("ibm-mq-in-1")
     @Incoming("ibm-mq-in-2")

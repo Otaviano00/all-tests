@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Getter
 @Setter
 public class ServiceBusResourceHolder<R> {
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private final AtomicBoolean restartScheduled = new AtomicBoolean(false);
 
     private volatile R resource;

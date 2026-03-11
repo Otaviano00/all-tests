@@ -1,6 +1,7 @@
 package otav.br.messaging.servicebus;
 
 import com.azure.messaging.servicebus.ServiceBusReceivedMessageContext;
+import com.azure.messaging.servicebus.models.DeadLetterOptions;
 import io.quarkus.logging.Log;
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
@@ -12,7 +13,7 @@ import otav.br.infrastructure.exception.MQTimeoutException;
 import otav.br.infrastructure.servicebus.ServiceBusConsumerManager;
 import otav.br.infrastructure.servicebus.ServiceBusMessageDispatcher;
 import otav.br.infrastructure.servicebus.config.ServiceBusConfig;
-import otav.br.messaging.ibmmq.IBMMQProducer;
+import otav.br.service.DevService;
 
 @Startup
 @ApplicationScoped
@@ -21,7 +22,7 @@ public class OtavTestConsumer {
     @Inject ServiceBusConsumerManager serviceBusConsumerManager;
     @Inject ServiceBusMessageDispatcher dispatcher;
     @Inject ServiceBusConfig serviceBusConfig;
-    @Inject IBMMQProducer ibmMqProducer;
+    @Inject DevService devService;
 
     private ServiceBusConfig.QueueConfig queueConfig;
     private ServiceBusConfig.NamespaceConfig namespaceConfig;
@@ -43,7 +44,7 @@ public class OtavTestConsumer {
         var processMessage = dispatcher.dispatchingHandler(
                 queueConfig,
                 ctx -> ctx.getMessage().getBody().toObject(OtavTestMessage.class),
-                ibmMqProducer::sendMessage
+                devService::mockProcess
         );
 
         var message = context.getMessage();
@@ -60,7 +61,7 @@ public class OtavTestConsumer {
             serviceBusConsumerManager.closeAndScheduleRestart(
                     namespaceConfig,
                     queueConfig,
-                    processMessage,
+                    this::processMessage,
                     null,
                     queueConfig.resilience().restartDelaySeconds()
             );

@@ -1,4 +1,4 @@
-package otav.br.messaging.ibmmq;
+package otav.br.infrastructure.ibmmq;
 
 import com.ibm.mq.MQException;
 import com.ibm.mq.constants.MQConstants;
@@ -14,15 +14,10 @@ import jakarta.jms.JMSException;
 import jakarta.jms.JMSProducer;
 import jakarta.jms.Session;
 import jakarta.jms.TextMessage;
-import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
-import org.eclipse.microprofile.faulttolerance.Retry;
 import otav.br.infrastructure.exception.MQPutException;
 import otav.br.infrastructure.exception.MQTimeoutException;
-import otav.br.infrastructure.ibmmq.IBMMQConnectionFactory;
 import otav.br.infrastructure.ibmmq.config.IBMMQConfig;
-import otav.br.messaging.servicebus.OtavTestMessage;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -87,21 +82,12 @@ public class IBMMQProducer {
         }
     }
 
-    @Retry(
-            retryOn = MQPutException.class,
-            maxRetries = 3,
-            delay = 2000,
-            maxDuration = 10,
-            durationUnit = ChronoUnit.SECONDS
-    )
-    @CircuitBreaker(requestVolumeThreshold = 10, failureRatio = 0.5)
-    public void sendMessage(OtavTestMessage message) {
+    public void sendMessage(String queueName, String message) {
         try {
-            String queueName = message.getModality().getQueueNameByModality(queueManagerConfig);
             Destination destination = jmsContext.createQueue(queueName);
-            TextMessage textMessage = jmsContext.createTextMessage(message.getContent());
+            TextMessage textMessage = jmsContext.createTextMessage(message);
             jmsProducer.send(destination, textMessage);
-            Log.infof("Sent message to IBM MQ: %s -> %s", message.getModality(), message.getContent());
+            Log.infof("Sent message to IBM MQ: %s", message);
         } catch (Exception e) {
             MQException mq = findMQException(e);
 

@@ -7,97 +7,106 @@ import jakarta.enterprise.context.ApplicationScoped;
 import lombok.Getter;
 import otav.br.infrastructure.servicebus.config.ServiceBusConfig;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.time.Instant;
+import java.util.Map;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
 @Getter
 @ApplicationScoped
 public class ServiceBusConsumerManager {
 
-    private final List<ServiceBusResourceHolder<ServiceBusProcessorClient>> resources = new ArrayList<>();
+    private record Key(String namespaceConnectionString, String queueName) {}
+
+    private final Map<Key, ServiceBusResourceHolder<ServiceBusProcessorClient>> resources = new ConcurrentHashMap<>();
+
+    // scheduler único e confiável
+    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
+        Thread t = new Thread(r, "servicebus-consumer-restart");
+        t.setDaemon(true);
+        return t;
+    });
 
     @PreDestroy
     public void shutdown() {
         Log.info("Shutting down Service Bus consumers...");
-        resources.forEach(holder -> {
-            if (holder.getResource() != null) {
-                holder.getResource().close();
-            }
+        resources.values().forEach(holder -> {
+            if (holder.getResource() != null) holder.getResource().close();
         });
         resources.clear();
+
+        scheduler.shutdownNow();
     }
 
     public void start(ServiceBusConfig.NamespaceConfig namespaceConfig,
                       ServiceBusConfig.QueueConfig queueConfig,
                       Consumer<ServiceBusReceivedMessageContext> processMessage,
-                      Consumer<ServiceBusErrorContext> processError
-    ) {
-        var existing = findResource(namespaceConfig, queueConfig);
+                      Consumer<ServiceBusErrorContext> processError) {
 
-        if (existing != null && existing.getResource() != null && existing.getResource().isRunning()) {
-            return;
-        }
+        var key = new Key(namespaceConfig.connectionString(), queueConfig.name());
 
-        var builder = new ServiceBusClientBuilder()
-                .connectionString(namespaceConfig.connectionString())
-                .processor()
-                .queueName(queueConfig.name());
+        resources.compute(key, (k, existing) -> {
+            if (existing != null && existing.getResource() != null && existing.getResource().isRunning()) {
+                return existing;
+            }
 
-        if (processMessage != null) builder.processMessage(processMessage);
+            var builder = new ServiceBusClientBuilder()
+                    .connectionString(namespaceConfig.connectionString())
+                    .processor()
+                    .queueName(queueConfig.name());
 
-        builder.processError(processError == null ? this::defaultProcessError : processError);
+            if (processMessage != null) builder.processMessage(processMessage);
+            builder.processError(processError == null ? this::defaultProcessError : processError);
 
-        var processorClient = builder.buildProcessorClient();
-        processorClient.start();
+            var processorClient = builder.buildProcessorClient();
+            processorClient.start();
 
-        resources.add(new ServiceBusResourceHolder<>(processorClient, namespaceConfig, queueConfig));
-
-        Log.infof("Service Bus consumer started for queue=%s", queueConfig.name());
+            Log.infof("Service Bus consumer started for queue=%s", queueConfig.name());
+            return new ServiceBusResourceHolder<>(processorClient, namespaceConfig, queueConfig);
+        });
     }
 
     public void close(ServiceBusConfig.NamespaceConfig namespaceConfig, ServiceBusConfig.QueueConfig queueConfig) {
-        var holder = findResource(namespaceConfig, queueConfig);
-
+        var key = new Key(namespaceConfig.connectionString(), queueConfig.name());
+        var holder = resources.remove(key);
         if (holder != null && holder.getResource() != null) {
-            resources.removeIf(r ->
-                    r.getNamespaceConfig().equals(namespaceConfig) && r.getQueueConfig().equals(queueConfig)
-            );
             holder.getResource().close();
         }
     }
 
-    public void closeAndScheduleRestart(
-            ServiceBusConfig.NamespaceConfig namespaceConfig,
-            ServiceBusConfig.QueueConfig queueConfig,
-            Consumer<ServiceBusReceivedMessageContext> processMessage,
-            Consumer<ServiceBusErrorContext> processError,
-            int delaySeconds
-    ) {
-        var holder = findResource(namespaceConfig, queueConfig);
+    public void closeAndScheduleRestart(ServiceBusConfig.NamespaceConfig namespaceConfig,
+                                        ServiceBusConfig.QueueConfig queueConfig,
+                                        Consumer<ServiceBusReceivedMessageContext> processMessage,
+                                        Consumer<ServiceBusErrorContext> processError,
+                                        int delaySeconds) {
 
-        if (holder == null || !holder.getRestartScheduled().compareAndSet(false, true)) {
+        var key = new Key(namespaceConfig.connectionString(), queueConfig.name());
+
+        // um flag por recurso (se o seu holder já tem, ok — mas precisa existir no holder atual do map)
+        var holder = resources.get(key);
+        if (holder == null) {
+            // se não existe ainda, não tenta reiniciar; alternativa: criar um placeholder com flag global por key
+            return;
+        }
+
+        AtomicBoolean flag = holder.getRestartScheduled();
+        if (flag == null || !flag.compareAndSet(false, true)) {
             return;
         }
 
         close(namespaceConfig, queueConfig);
 
-        holder.getScheduler().schedule(() -> {
+        scheduler.schedule(() -> {
             try {
-                Log.infof("Restarting Service Bus consumer after %ds for queue=%s...", delaySeconds, queueConfig.name());
-                start(holder.getNamespaceConfig(), holder.getQueueConfig(), processMessage, processError);
+                Log.warnf("Restarting Service Bus consumer after %ds for queue=%s. now=%s thread=%s",
+                        delaySeconds, queueConfig.name(), Instant.now(), Thread.currentThread().getName()
+                );
+                start(namespaceConfig, queueConfig, processMessage, processError);
             } finally {
-                holder.getRestartScheduled().set(false);
+                flag.set(false);
             }
         }, delaySeconds, TimeUnit.SECONDS);
-    }
-
-    private ServiceBusResourceHolder<ServiceBusProcessorClient> findResource(ServiceBusConfig.NamespaceConfig namespaceConfig, ServiceBusConfig.QueueConfig queueConfig) {
-        return resources.stream()
-                .filter(r -> r.equals(namespaceConfig, queueConfig))
-                .findFirst()
-                .orElse(null);
     }
 
     private void defaultProcessError(ServiceBusErrorContext errorContext) {
