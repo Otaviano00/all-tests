@@ -11,8 +11,7 @@ import otav.br.messaging.servicebus.OtavTestMessage;
 @Path("ibm-mq/queue")
 public class IBMMQResource {
 
-    @Inject
-    IBMMQProducer producer;
+    @Inject IBMMQProducer producer;
 
     @POST
     public Response sendMessage(

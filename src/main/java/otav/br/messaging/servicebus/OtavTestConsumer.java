@@ -1,12 +1,14 @@
 package otav.br.messaging.servicebus;
 
-import com.azure.messaging.servicebus.ServiceBusErrorContext;
+import com.azure.messaging.servicebus.ServiceBusReceivedMessageContext;
 import io.quarkus.logging.Log;
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
+import otav.br.infrastructure.exception.MQPutException;
+import otav.br.infrastructure.exception.MQTimeoutException;
 import otav.br.infrastructure.servicebus.ServiceBusConsumerManager;
 import otav.br.infrastructure.servicebus.ServiceBusMessageDispatcher;
 import otav.br.infrastructure.servicebus.config.ServiceBusConfig;
@@ -21,33 +23,65 @@ public class OtavTestConsumer {
     @Inject ServiceBusConfig serviceBusConfig;
     @Inject IBMMQProducer ibmMqProducer;
 
+    private ServiceBusConfig.QueueConfig queueConfig;
+    private ServiceBusConfig.NamespaceConfig namespaceConfig;
+
     @PostConstruct
     public void init() {
-        var namespaceConfig = serviceBusConfig.namespaces().get("otav.dev");
-        var queueConfig = namespaceConfig.queue().get("otav.test");
+        namespaceConfig = serviceBusConfig.namespaces().get("otav.dev");
+        queueConfig = namespaceConfig.queue().get("otav.test");
 
         serviceBusConsumerManager.start(
                 namespaceConfig,
                 queueConfig,
-                dispatcher.dispatchingHandler(
-                        queueConfig,
-                        ctx -> ctx.getMessage().getBody().toObject(OtavTestMessage.class),
-                        ibmMqProducer::sendMessage
-                ),
-                this::processError
+                this::processMessage,
+                null
+        );
+    }
+
+    public void processMessage(ServiceBusReceivedMessageContext context) {
+        var processMessage = dispatcher.dispatchingHandler(
+                queueConfig,
+                ctx -> ctx.getMessage().getBody().toObject(OtavTestMessage.class),
+                ibmMqProducer::sendMessage
         );
 
-        Log.infof("aaaa");
-    }
+        var message = context.getMessage();
 
-    public void processError(ServiceBusErrorContext context) {
-        Log.errorf(context.getException(), "Service Bus processor error: %s", context.getException().getMessage());
-    }
+        try {
+            processMessage.accept(context);
+        } catch (CircuitBreakerOpenException e) {
+            Log.warnf("[%s] Circuit breaker open. Abandoning messageId=%s and scheduling consumer restart. %s",
+                    queueConfig.name(), message.getMessageId(), e.getMessage()
+            );
 
-    @PreDestroy
-    public void cleanup() {
-        var namespaceConfig = serviceBusConfig.namespaces().get("otav.dev");
-        var queueConfig = namespaceConfig.queue().get("otav.test");
-        serviceBusConsumerManager.stop(queueConfig.name());
+            context.abandon();
+
+            serviceBusConsumerManager.closeAndScheduleRestart(
+                    namespaceConfig,
+                    queueConfig,
+                    processMessage,
+                    null,
+                    queueConfig.resilience().restartDelaySeconds()
+            );
+        } catch (MQTimeoutException e) {
+            Log.errorf(e, "[%s] Uncertain MQ PUT outcome. Dead-lettering messageId=%s to avoid duplicates.",
+                    queueConfig.name(), message.getMessageId()
+            );
+
+            context.deadLetter();
+        } catch (MQPutException e) {
+            Log.errorf(e, "[%s] Definitive MQ PUT failure. Abandoning messageId=%s for retry.",
+                    queueConfig.name(), message.getMessageId()
+            );
+            context.abandon();
+        } catch (Exception e) {
+            Log.errorf(e,
+                    "[%s] Unexpected error processing messageId=%s. Dead-lettering to avoid poison-message loop.",
+                    queueConfig.name(), message.getMessageId()
+            );
+            context.deadLetter();
+        }
+
     }
 }

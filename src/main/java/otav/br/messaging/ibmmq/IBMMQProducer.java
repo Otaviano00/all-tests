@@ -63,17 +63,8 @@ public class IBMMQProducer {
             MQConstants.MQRC_RECONNECT_TIMED_OUT     // 2556
     );
 
-    private IBMMQConnectionFactory connectionFactory;
-    private IBMMQConfig ibmMQConfig;
-
-    @Inject
-    public IBMMQProducer(
-                IBMMQConnectionFactory connectionFactory,
-                IBMMQConfig ibmmqConfig
-    ){
-        this.connectionFactory = connectionFactory;
-        this.ibmMQConfig = ibmmqConfig;
-    }
+    @Inject IBMMQConnectionFactory connectionFactory;
+    @Inject IBMMQConfig ibmMQConfig;
 
     @PostConstruct
     public synchronized void init() {

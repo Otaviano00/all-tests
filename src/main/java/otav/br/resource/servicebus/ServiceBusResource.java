@@ -1,17 +1,16 @@
 package otav.br.resource.servicebus;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
-import lombok.AllArgsConstructor;
 import otav.br.messaging.ibmmq.ModalityEnum;
 import otav.br.messaging.servicebus.OtavTestMessage;
 import otav.br.messaging.servicebus.OtavTestProducer;
 
 @Path("servicebus/queue")
-@AllArgsConstructor
 public class ServiceBusResource {
 
-    private OtavTestProducer producer;
+    @Inject OtavTestProducer producer;
 
     @POST
     public Response sendMessage(
