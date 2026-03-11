@@ -18,6 +18,9 @@ import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import otav.br.infrastructure.exception.MQPutException;
 import otav.br.infrastructure.exception.MQTimeoutException;
+import otav.br.infrastructure.ibmmq.IBMMQConnectionFactory;
+import otav.br.infrastructure.ibmmq.config.IBMMQConfig;
+import otav.br.messaging.servicebus.OtavTestMessage;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Set;
@@ -32,7 +35,8 @@ public class IBMMQProducer {
 
     private volatile JMSContext jmsContext;
     private volatile JMSProducer jmsProducer;
-    private volatile Destination destination;
+
+    private IBMMQConfig.QueueManagerConfig queueManagerConfig;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private final AtomicBoolean reconnectScheduled = new AtomicBoolean(false);
@@ -59,19 +63,19 @@ public class IBMMQProducer {
             MQConstants.MQRC_RECONNECT_TIMED_OUT     // 2556
     );
 
-    @Inject
-    IBMMQConnectionFactory connectionFactory;
+    @Inject IBMMQConnectionFactory connectionFactory;
+    @Inject IBMMQConfig ibmMQConfig;
 
     @PostConstruct
     public synchronized void init() {
         try {
             cleanup();
 
-            this.jmsContext = connectionFactory.createConnectionFactory()
-                    .createContext(Session.AUTO_ACKNOWLEDGE);
+            queueManagerConfig = ibmMQConfig.queueManagers().get("QM8");
 
+            this.jmsContext = connectionFactory.createConnectionFactory(queueManagerConfig)
+                    .createContext(Session.AUTO_ACKNOWLEDGE);
             this.jmsProducer = jmsContext.createProducer().setTimeToLive(0);
-            this.destination = jmsContext.createQueue("DEV.QUEUE.1");
 
             Log.info("IBM MQ JMS producer initialized");
         } catch (Exception e) {
@@ -91,11 +95,13 @@ public class IBMMQProducer {
             durationUnit = ChronoUnit.SECONDS
     )
     @CircuitBreaker(requestVolumeThreshold = 10, failureRatio = 0.5)
-    public void produce(String message) {
+    public void sendMessage(OtavTestMessage message) {
         try {
-            TextMessage textMessage = jmsContext.createTextMessage(message);
+            String queueName = message.getModality().getQueueNameByModality(queueManagerConfig);
+            Destination destination = jmsContext.createQueue(queueName);
+            TextMessage textMessage = jmsContext.createTextMessage(message.getContent());
             jmsProducer.send(destination, textMessage);
-            Log.infof("Sent message to IBM MQ: %s", message);
+            Log.infof("Sent message to IBM MQ: %s -> %s", message.getModality(), message.getContent());
         } catch (Exception e) {
             MQException mq = findMQException(e);
 
@@ -161,7 +167,6 @@ public class IBMMQProducer {
         } finally {
             jmsContext = null;
             jmsProducer = null;
-            destination = null;
         }
     }
 

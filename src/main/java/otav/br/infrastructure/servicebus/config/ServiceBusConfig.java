@@ -1,4 +1,4 @@
-package otav.br.infrastructure.servicebus;
+package otav.br.infrastructure.servicebus.config;
 
 import io.smallrye.config.ConfigMapping;
 
@@ -11,11 +11,18 @@ public interface ServiceBusConfig {
 
     interface NamespaceConfig {
         Map<String, QueueConfig> queue();
+        String connectionString();
     }
 
     interface QueueConfig {
         String name();
-        String connectionString();
+        ResilienceConfig resilience();
+    }
+
+    interface ResilienceConfig {
+        String timeoutQueue();
+        int timeoutRetryDelaySeconds();
+        int restartDelaySeconds();
     }
 
 }

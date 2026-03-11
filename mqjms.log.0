@@ -302,3 +302,73 @@ null
 AÇÃO:
 null
 --------------------------------------------------------------------
+Date: Mon Mar 09 21:09:29 BRT 2026
+MQ Build Level=X.X.X(p944-L251003)
+Java version: 21.0.8(21.0.8+9-LTS)
+Process ID: 50996
+--------------------------------------------------------------------
+9 de março de 2026 21:09:29 BRT[Quarkus Main Thread] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Tempos de reconexão (milissegundos): '[1078, 2035, 4088, 8033, 16274, 25580]'
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------
+Date: Mon Mar 09 21:16:40 BRT 2026
+MQ Build Level=X.X.X(p944-L251003)
+Java version: 21.0.8(21.0.8+9-LTS)
+Process ID: 56662
+--------------------------------------------------------------------
+9 de março de 2026 21:16:40 BRT[Quarkus Main Thread] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Tempos de reconexão (milissegundos): '[1236, 2037, 4320, 8303, 17170, 26127]'
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------
+Date: Mon Mar 09 23:12:04 BRT 2026
+MQ Build Level=X.X.X(p944-L251003)
+Java version: 21.0.8(21.0.8+9-LTS)
+Process ID: 109855
+--------------------------------------------------------------------
+9 de março de 2026 23:12:04 BRT[Quarkus Main Thread] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Tempos de reconexão (milissegundos): '[1117, 2398, 4400, 8458, 16086, 26107]'
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------
+Date: Mon Mar 09 23:15:49 BRT 2026
+MQ Build Level=X.X.X(p944-L251003)
+Java version: 21.0.8(21.0.8+9-LTS)
+Process ID: 110938
+--------------------------------------------------------------------
+9 de março de 2026 23:15:49 BRT[Quarkus Main Thread] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Tempos de reconexão (milissegundos): '[1092, 2052, 4037, 8924, 16359, 26306]'
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------
+Date: Mon Mar 09 23:18:40 BRT 2026
+MQ Build Level=X.X.X(p944-L251003)
+Java version: 21.0.8(21.0.8+9-LTS)
+Process ID: 113830
+--------------------------------------------------------------------
+9 de março de 2026 23:18:40 BRT[Quarkus Main Thread] com.ibm.mq.jmqi.remote.impl.RemoteReconnectThread
+Tempos de reconexão (milissegundos): '[1095, 2479, 4143, 8683, 16541, 26246]'
+
+EXPLICAÇÃO:
+null
+
+AÇÃO:
+null
+--------------------------------------------------------------------

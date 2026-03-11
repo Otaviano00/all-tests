@@ -1,31 +1,35 @@
 package otav.br.messaging.servicebus;
 
 import io.quarkus.logging.Log;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
-import lombok.AllArgsConstructor;
-import otav.br.infrastructure.servicebus.ServiceBusConfig;
-import otav.br.infrastructure.servicebus.ServiceBusProducer;
+import jakarta.inject.Inject;
+import otav.br.infrastructure.servicebus.config.ServiceBusConfig;
+import otav.br.infrastructure.servicebus.ServiceBusProducerManager;
 
 @ApplicationScoped
-@AllArgsConstructor
 public class OtavTestProducer {
 
-    private ServiceBusProducer serviceBusProducer;
-    private ServiceBusConfig serviceBusConfig;
+    @Inject ServiceBusProducerManager serviceBusProducerManager;
+    @Inject ServiceBusConfig serviceBusConfig;
 
-    public void sendMessage(String message) {
-        // Access the configuration: namespace -> queue
-        ServiceBusConfig.QueueConfig queueConfig = serviceBusConfig
+    private ServiceBusConfig.NamespaceConfig namespaceConfig;
+    private ServiceBusConfig.QueueConfig queueConfig;
+
+    @PostConstruct
+    public void init() {
+        namespaceConfig = serviceBusConfig
                 .namespaces()
-                .get("otav.dev")
+                .get("otav.dev");
+
+        queueConfig = namespaceConfig
                 .queue()
                 .get("otav.test");
+    }
 
-        String queueName = queueConfig.name();
-        String connectionString = queueConfig.connectionString();
-
-        serviceBusProducer.sendMessage(queueName, connectionString, message);
-        Log.infof("Sent message to Service Bus queue '%s' in namespace 'otav.dev': %s", queueName, message);
+    public void sendMessage(OtavTestMessage message) {
+        serviceBusProducerManager.sendMessage(namespaceConfig, queueConfig, null, message);
+        Log.infof("[%s] Sent message to Service Bus: %s", queueConfig.name(), message.toString());
     }
 
 }
